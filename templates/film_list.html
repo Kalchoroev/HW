@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Films</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css/' %}"/>
+</head>
+<body>
+
+<style>
+    .films__container {
+        max-width: 900px;
+        margin-bottom: 40px;
+    }
+
+    body {
+        background-color: #00DBDE;
+        background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    }
+
+    .post__img {
+        height: 500px;
+        object-fit: contain;
+    }
+
+    .btn-primary {
+        background-color: #FF3CAC;
+        background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+
+    }
+</style>
+<div class="container button__container">
+    <a href="/films/" class="btn btn-primary">Films</a>
+</div>
+
+
+<div class="container films__container">
+    <div class="row gy-5">
+        {% for i in object_list %}
+        <div class="col-6">
+            <div class="card">
+                <img src="{{ i.image.url }}" class="card-img-top post__img" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.tittle}}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <a href="/films/{{ i.id }}" class="btn btn-primary">Go detail</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
